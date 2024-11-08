@@ -193,6 +193,12 @@ function onSettingsChanged(newSettings, oldSettings) {
 	}
 }
 
+function onAutoStartToggled(autoStart) {
+	app.setLoginItemSettings({
+		openAtLogin: autoStart
+	})
+}
+
 /** Setup store related events and listeners */
 function setupStore() {
 	setInterval(() => {
@@ -284,6 +290,9 @@ function registerIpc() {
 					break
 				case 'settingsUpdated':
 					onSettingsChanged(...args)
+					break
+				case 'onAutoStartToggled':
+					onAutoStartToggled(...args)
 					break
 				default:
 					break

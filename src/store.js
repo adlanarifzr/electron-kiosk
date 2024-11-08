@@ -8,9 +8,13 @@ const store = new Store({
 			properties: {
 				url: {
 					type: 'string',
-					default: 'https://www.on-system.net'
+					default: 'https://encoremed.io/dashboard'
 				},
 				autoLoad: {
+					type: 'boolean',
+					default: false
+				},
+				autoStart: {
 					type: 'boolean',
 					default: false
 				},
@@ -64,8 +68,9 @@ const store = new Store({
 	},
 	defaults: {
 		settings: {
-			url: 'https://www.on-system.net',
+			url: 'https://encoremed.io/dashboard',
 			autoLoad: false,
+			autoStart: false,
 			dark: true,
 			cacheLimit: 500,
 			autoReload: false,

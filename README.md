@@ -1,4 +1,4 @@
-# Electron KIOSK
+# EM KIOSK
 
 ![electron version](https://img.shields.io/github/package-json/dependency-version/innovation-system/electron-kiosk/dev/electron)
 ![electron vite version](https://img.shields.io/github/package-json/dependency-version/innovation-system/electron-kiosk/dev/electron-vite)

@@ -1,4 +1,4 @@
-echo '# Installing Electron KIOSK... '
+echo '# Installing EM KIOSK... '
 cd ~
 # Get arch
 
@@ -12,7 +12,7 @@ getUrl() {
 	fi
 }
 
-curl -s https://api.github.com/repos/innovation-system/electron-kiosk/releases/latest \
+curl -s https://api.github.com/repos/adlanarifzr/electron-kiosk/releases/latest \
 	| getUrl \
 	| cut -d : -f 2,3 \
 	| tr -d \" \
@@ -24,7 +24,7 @@ FILE=$(ls | grep electron-kiosk*.AppImage)
 mkdir -p ~/.config/autostart
 echo "[Desktop Entry]
 Type=Application
-Name=Electron Kiosk
+Name=EM Kiosk
 Exec=$(pwd)/$FILE
 X-GNOME-Autostart-enabled=true
 	" > ~/.config/autostart/electron-kiosk.desktop
@@ -34,4 +34,4 @@ chmod +x $FILE
 	# create symlink to desktop
 ln -sf $(pwd)/$FILE $(xdg-user-dir DESKTOP)/On-Board
 
-echo '# Electron KIOSK installed and starting on BOOT'
+echo '# EM KIOSK installed and starting on BOOT'

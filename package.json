@@ -1,8 +1,8 @@
 {
-	"name": "electron-kiosk",
+	"name": "em-kiosk",
 	"version": "0.10.0",
 	"private": false,
-	"description": "Electron Kiosk",
+	"description": "EM Kiosk",
 	"main": "./out/main/index.js",
 	"author": "Innovation-System s.r.l <innovation.on.system@gmail.com>",
 	"scripts": {

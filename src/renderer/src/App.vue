@@ -192,6 +192,15 @@
 											{{ settings.dark ? '🌙' : '☀️' }}
 										</template>
 									</v-switch>
+									<v-switch
+										color="primary"
+										v-model="settings.autoStart"
+										@update:modelValue="onAutoStartToggled"
+										inset
+										label="Start On Boot"
+										class="ml-3"
+									>
+									</v-switch>
 								</v-col>
 							</v-row>
 						</v-form>
@@ -300,6 +309,9 @@ export default {
 				case 'getDisplays':
 					this.displays = data
 					return
+				case 'onAutoStartToggled':
+					text = `Auto start ${data ? 'ENABLED' : 'DISABLED'}`
+					break
 
 				default:
 					text = `Unknown action ${action}`
@@ -323,6 +335,9 @@ export default {
 
 	methods: {
 		parse,
+		onAutoStartToggled(value) {
+			this.sendAction('onAutoStartToggled', value)
+		},
 		validDisplay(id) {
 			if (!this.displays.find(d => d.id === id)) {
 				return 'Invalid display'
@@ -345,6 +360,10 @@ export default {
 		},
 		validUrl(url) {
 			try {
+				if (!url.includes('encoremed.io')) {
+					return 'Unsupported URL'
+				}
+
 				const parsed = new URL(url)
 				return (
 					parsed.protocol === 'http:' ||
