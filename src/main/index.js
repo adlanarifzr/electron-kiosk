@@ -63,7 +63,8 @@ function setupWindowsManager() {
 			// for more info
 			nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
 			contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
-			enableRemoteModule: true
+			enableRemoteModule: true,
+			webSecurity: false
 		}
 	})
 
