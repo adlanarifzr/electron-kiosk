@@ -380,6 +380,11 @@ if (!gotTheLock) {
 	app.commandLine.appendSwitch('ignore-certificate-errors')
 	app.commandLine.appendSwitch('allow-insecure-localhost', 'true')
 
+	app.commandLine.appendSwitch(
+		'unsafely-treat-insecure-origin-as-secure',
+		'http://localhost,http://127.0.0.1,http://encoremed.io,http://*.encoremed.io'
+	)
+
 	// Exit cleanly on request from parent process in development mode.
 	if (is.dev) {
 		if (process.platform === 'win32') {
