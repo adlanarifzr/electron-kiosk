@@ -361,7 +361,9 @@ export default {
 		validUrl(url) {
 			try {
 				if (!url.includes('encoremed.io')) {
-					return 'Unsupported URL'
+					const privateIPRegex =
+						/(?:\b(?:10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|127\.\d{1,3}\.\d{1,3}\.\d{1,3})\b)/
+					return privateIPRegex.test(url) ? true : 'Unsupported URL'
 				}
 
 				const parsed = new URL(url)

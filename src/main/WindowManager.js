@@ -211,4 +211,16 @@ export default class WindowManager {
 			window.destroy()
 		}
 	}
+
+	zoomIn() {
+		for (const window of this.windows) {
+			window.webContents.zoomFactor += 0.1
+		}
+	}
+
+	zoomOut() {
+		for (const window of this.windows) {
+			window.webContents.zoomFactor -= 0.1
+		}
+	}
 }
