@@ -63,10 +63,7 @@ function setupWindowsManager() {
 			// for more info
 			nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
 			contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
-			enableRemoteModule: true,
-			webSecurity: false,
-			allowDisplayingInsecureContent: true,
-			allowRunningInsecureContent: true
+			enableRemoteModule: true
 		}
 	})
 
@@ -382,16 +379,6 @@ if (!gotTheLock) {
 	// Ignore certificates errors on page
 	app.commandLine.appendSwitch('ignore-certificate-errors')
 	app.commandLine.appendSwitch('allow-insecure-localhost', 'true')
-
-	app.on(
-		'certificate-error',
-		(event, webContents, url, error, certificate, callback) => {
-			// Prevent having error
-			event.preventDefault()
-			// and continue
-			callback(true)
-		}
-	)
 
 	// Exit cleanly on request from parent process in development mode.
 	if (is.dev) {
