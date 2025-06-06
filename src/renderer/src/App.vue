@@ -264,6 +264,7 @@
 <script>
 import parse from 'parse-duration'
 import AtomLoader from './components/AtomLoader.vue'
+import ipaddr from 'ipaddr.js';
 
 export default {
 	components: { AtomLoader },
@@ -360,13 +361,11 @@ export default {
 		},
 		validUrl(url) {
 			try {
+				const parsed = new URL(url)
 				if (!url.includes('encoremed.io')) {
-					const privateIPRegex =
-						/(?:\b(?:10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.(?:1[6-9]|2\d|3[01])\.\d{1,3}\.\d{1,3}|192\.168\.\d{1,3}\.\d{1,3}|127\.\d{1,3}\.\d{1,3}\.\d{1,3})\b)/
-					return privateIPRegex.test(url) ? true : 'Unsupported URL'
+					return ipaddr.IPv4.isValid(parsed.hostname);
 				}
 
-				const parsed = new URL(url)
 				return (
 					parsed.protocol === 'http:' ||
 					parsed.protocol === 'https:' ||
